@@ -10,11 +10,6 @@ export const Layout = () => {
         <>
             <AppShell
                 header={{ height: 60 }}
-                navbar={{
-                    width: 300,
-                    breakpoint: 'sm',
-                    collapsed: { mobile: !opened },
-                }}
                 padding="md"
             >
                 <AppShell.Header className="flex flex-row">
