@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useTodo } from "../hooks/useTodoForm";
 import { Todo } from "../types/Todo";
 import { Button, Container, Paper, Stack, TextInput } from "@mantine/core";
-import { CreateTodoApi } from "../api/Todo/CreateTodoApi";
+import { EditTodoApi } from "../api/Todo/EditTodoApi";
 
-export const TodoForm = () => {
+export const EditTodo = () => {
     const form = useTodo();
+    const { id } = useParams();
+    const numericId = parseInt(id!, 10);
     const navigate = useNavigate();
 
     const handleSubmit = async (values: Todo) => {
         try {
-            await CreateTodoApi(values);
+            await EditTodoApi(numericId, values);
             navigate('/todo');
         } catch (e) {
             console.log(e);
@@ -25,7 +27,7 @@ export const TodoForm = () => {
                         <Stack gap="md" align="center">
                             <TextInput label="Title" {...form.getInputProps('title')} style={{ width: '50%' }} />
                             <TextInput label="Description" {...form.getInputProps('body')} style={{ width: '50%' }} />
-                            <Button type="submit">Submit</Button>
+                            <Button type="submit">Edit</Button>
                         </Stack>
                     </form>
                 </Paper >

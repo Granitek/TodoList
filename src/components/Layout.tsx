@@ -1,10 +1,8 @@
 import { Outlet } from "react-router-dom"
 import { NavBar } from "./NavBar"
 import { AppShell } from "@mantine/core"
-import { useDisclosure } from "@mantine/hooks";
 
 export const Layout = () => {
-    const [opened] = useDisclosure();
 
     return (
         <>

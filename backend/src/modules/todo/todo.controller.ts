@@ -12,9 +12,15 @@ export class TodoController {
 
     }
 
+    @Get("/all")
+    listTodoAll() {
+        return this.todoService.listTodoAll();
+    }
+
     @Get()
-    listTodo() {
-        return this.todoService.listTodo();
+    @UseGuards(TokenGuard)
+    listTodo(@UserID() userId: number) {
+        return this.todoService.listTodo(userId);
     }
 
     @Get(":id")
@@ -47,5 +53,13 @@ export class TodoController {
         const istodo = await this.todoService.get(id, userId);
         if (!istodo) throw new HttpException("No Todo with id " + id, 404);
         return this.todoService.editTodo(id, todo);
+    }
+
+    @Put(":id/done")
+    @UseGuards(TokenGuard)
+    async updateTodo(@Param("id", ParseIntPipe) id: number, @UserID() userId: number) {
+        const istodo = await this.todoService.get(id, userId);
+        if (!istodo) throw new HttpException("No Todo with id " + id, 404);
+        return this.todoService.updateTodo(id);
     }
 }

@@ -1,29 +1,29 @@
-import { Button, Container, NavLink, Paper, PasswordInput, Stack, TextInput } from "@mantine/core";
+import { Button, Container, Paper, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { FC } from "react"
-import { Login } from "../api/Login";
 import { Notification } from "../api/Notification";
 import { useNavigate } from "react-router-dom";
+import { RegisterApi } from "../api/Register";
 
-type LoginType = {
+type RegisterType = {
     email: string;
     password: string;
 }
 
-export const LoginPage: FC = () => {
+export const RegisterPage: FC = () => {
     const navigate = useNavigate();
 
-    const form = useForm<LoginType>({
+    const form = useForm<RegisterType>({
         initialValues: {
             email: '',
             password: ''
         }
     })
 
-    const handleSubmit = async (data: LoginType) => {
+    const handleSubmit = async (data: RegisterType) => {
         try {
-            await Login(data.email, data.password);
-            navigate('/');
+            await RegisterApi(data);
+            navigate('/login');
         } catch (e) {
             Notification();
         }
@@ -37,12 +37,7 @@ export const LoginPage: FC = () => {
                         <Stack gap="md" align="center">
                             <TextInput required type="email" label="Email" {...form.getInputProps('email')} style={{ width: '50%' }} />
                             <PasswordInput required label="Password" {...form.getInputProps('password')} style={{ width: '50%' }} />
-                            <Button type="submit">Login</Button>
-                            <NavLink
-                                onClick={() => navigate('/register')}
-                                label="Don't have an account? SignIn"
-                                className="w-auto"
-                            />
+                            <Button type="submit">Register</Button>
                         </Stack>
                     </form>
                 </Paper >

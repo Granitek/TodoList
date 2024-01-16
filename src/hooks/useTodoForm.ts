@@ -1,4 +1,4 @@
-import { hasLength, isNotEmpty, useForm } from "@mantine/form";
+import { isNotEmpty, useForm } from "@mantine/form";
 import { Todo } from "../types/Todo";
 
 export const useTodo = () => {
@@ -6,11 +6,10 @@ export const useTodo = () => {
         initialValues: {
             title: "",
             body: "",
-            done: false
         },
 
         validate: {
-            title: hasLength({ min: 2, max: 99 }, 'Title must be 2-99 characters long'),
+            title: isNotEmpty('Todo needs title'),
             body: isNotEmpty('Todo needs description')
         }
     });
