@@ -3,4 +3,5 @@ export class TodoDto {
     title: string;
     body: string;
     done: boolean = false;
+    tag: number[];
 }

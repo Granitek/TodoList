@@ -7,4 +7,6 @@ export class CreateTodoDto {
     @IsString()
     @IsNotEmpty()
     body: string;
+    @IsNotEmpty()
+    tag: number[];
 }

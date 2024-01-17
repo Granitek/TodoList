@@ -1,7 +1,6 @@
 import { Navigate, RouteObject, useRoutes } from "react-router-dom";
 import { Layout } from "./Layout";
 import { TodoList } from "./TodoList";
-import { TodoForm } from "./TodoForm";
 import { ErrorPage } from "./ErrorPage";
 import { LoginPage } from "./LoginPage";
 import { useIsLogged } from "../hooks/useIsLogged";
@@ -49,11 +48,11 @@ const loggedRoutes: RouteObject[] = [
             },
             {
                 path: "/todo/new",
-                element: <TodoForm />
+                element: <EditTodo />
             },
             {
                 path: "/todo/:id",
-                element: <TodoForm />
+                element: <EditTodo />
             },
             {
                 path: "/todo/:id/edit",

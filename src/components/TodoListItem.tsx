@@ -15,6 +15,7 @@ export const TodoListItem: FC<TodoListItemProps> = memo(({ item, handleClick, ha
     const border: CSSProperties | undefined = item.done ? { border: "1px solid", borderColor: "green" } : undefined;
 
     const navigate = useNavigate();
+    console.log(item.todoTag);
 
     return (
         <>

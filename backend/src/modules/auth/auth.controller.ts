@@ -19,7 +19,7 @@ export class AuthController {
         });
         response.cookie('is-logged', true, {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000)
-        })
+        });
     }
 
     @Post('logout')

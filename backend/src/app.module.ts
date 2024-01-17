@@ -7,9 +7,10 @@ import { ConfigModule } from '@nestjs/config'
 import { TokenModule } from './modules/token/token.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { TagModule } from './modules/tag/tag.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), TodoModule, PrismaModule, TokenModule, UserModule, AuthModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), TodoModule, PrismaModule, TokenModule, UserModule, AuthModule, TagModule],
   controllers: [AppController],
   providers: [AppService],
 })

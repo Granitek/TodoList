@@ -6,6 +6,7 @@ export const useTodo = () => {
         initialValues: {
             title: "",
             body: "",
+            tag: []
         },
 
         validate: {
