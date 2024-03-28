@@ -12,11 +12,6 @@ export class TodoController {
 
     }
 
-    @Get("/all")
-    listTodoAll() {
-        return this.todoService.listTodoAll();
-    }
-
     @Get()
     @UseGuards(TokenGuard)
     listTodo(@UserID() userId: number) {
